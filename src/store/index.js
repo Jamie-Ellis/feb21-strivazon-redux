@@ -2,11 +2,8 @@ import { createStore } from 'redux'
 import mainReducer from '../reducers'
 
 export const initialState = {
-  cart: {
-    products: [],
-  },
-  user: {
-    firstName: '',
+  favorites: {
+    jobs: [],
   },
 }
 

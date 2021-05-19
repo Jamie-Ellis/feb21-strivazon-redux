@@ -21,32 +21,21 @@ import { initialState } from '../store'
 
 const mainReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'ADD_TO_CART':
+    case 'ADD_TO_FAVORITES':
       return {
         ...state,
         cart: {
           ...state.cart,
-          products: state.cart.products.concat(action.payload), // the book
-          //   products: state.cart.products.push(action.payload),
-          // WHAT IS IMMUTABILITY?
-          // YOU CANNOT USE METHODS THAT ALTERS OR MUTATES THE STATE
-          // YOU CANNOT USE I.E. PUSH OR SPLICE
+          jobs: state.favorites.jobs.concat(action.payload),
+     
         },
       }
-    case 'REMOVE_FROM_CART':
+    case 'REMOVE_FROM_FAVORITES':
       return {
         ...state,
         cart: {
           ...state.cart,
-          products: state.cart.products.filter((book, i) => i !== action.payload),
-        },
-      }
-    case 'SET_USERNAME':
-      return {
-        ...state,
-        user: {
-          ...state.user,
-          firstName: action.payload,
+          jobs: state.favorites.jobs.filter((job, i) => i !== action.payload),
         },
       }
     default:
