@@ -21,6 +21,17 @@ import { initialState } from '../store'
 
 const mainReducer = (state = initialState, action) => {
   switch (action.type) {
+    case 'ADD_TO_CART':
+      return {
+        ...state,
+        cart: {
+          ...state.cart,
+          products: state.cart.products.concat(action.payload), // the book
+          // WHAT IS IMMUTABILITY?
+          // YOU CANNOT USE METHODS THAT ALTERS OR MUTATES THE STATE
+          // YOU CANNOT USE I.E. PUSH OR SPLICE
+        },
+      }
     default:
       return state
   }

@@ -1,6 +1,17 @@
 import { Component } from "react";
 import { Col, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
+import { connect } from 'react-redux'
+
+const mapDispatchToProps = (dispatch) => ({
+  addToCart: (book) => {
+    dispatch({
+      // we need to pass an action here
+      type: 'ADD_TO_CART',
+      payload: book
+    })
+  }
+})
 
 class BookDetail extends Component {
   state = {
@@ -44,7 +55,7 @@ class BookDetail extends Component {
                   <span className="font-weight-bold">Price:</span>
                   {this.state.book.price}
                 </p>
-                <Button color="primary" onClick={() => { }}>
+                <Button color="primary" onClick={() => this.props.addToCart(this.state.book)}>
                   ADD TO CART
                 </Button>
               </Col>
@@ -62,4 +73,4 @@ class BookDetail extends Component {
   }
 }
 
-export default BookDetail;
+export default connect(null, mapDispatchToProps)(BookDetail);
